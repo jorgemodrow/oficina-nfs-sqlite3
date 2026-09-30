@@ -5,7 +5,7 @@ CARROS_INICIAIS = [
     ("Honda Civic", 160),
     ("Mazda RX-7", 255),
     ("Nissan 350Z", 287),
-    ("Mitsubishi Lancer Evolution IX", 286),
+    ("Mitsubishi Lancer Evo IX", 286),
     ("Subaru Impreza WRX STI", 300),
     ("Toyota Supra MK4", 320),
     ("Nissan Skyline GT-R R34", 280),
@@ -45,14 +45,14 @@ PECAS_INICIAIS = [
     # Admissão & Alimentação
     ("Filtro de Ar Cônico Esportivo", 12, None),
     ("Intake de Fibra de Carbono", 22, None),
-    ("Bicos Injetores de Alta Vazão (80 lbs)", 30, None),
+    ("Bicos Injetores de Alta Vazão", 30, None),
     ("Bomba de Combustível Walbro 450", 18, None),
     ("Coletor de Admissão Plenum", 28, None),
 
     # Comando & Motor
     ("Comando de Válvulas Bravo 288°", 55, None),
     ("Pistões Forjados com Bielas em H", 75, None),
-    ("Velas de Iridium & Cabos de Alta Voltagem", 15, None),
+    ("Velas Iridium & Cabos Alta Volt.", 15, None),
 
     # Exaustão
     ("Coletor de Escape 4x1 em Inox", 25, None),
