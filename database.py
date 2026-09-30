@@ -1,26 +1,80 @@
 import sqlite3
 
-BANCO = "garagem_nfs.db"
-
 CARROS_INICIAIS = [
-    ("Nissan Skyline GT-R R34", 280),
-    ("Toyota Supra MK4", 320),
+    # JAPONESES
+    ("Honda Civic", 160),
     ("Mazda RX-7", 255),
+    ("Nissan 350Z", 287),
+    ("Mitsubishi Lancer Evolution IX", 286),
+    ("Subaru Impreza WRX STI", 300),
+    ("Toyota Supra MK4", 320),
+    ("Nissan Skyline GT-R R34", 280),
+
+    # EUROPEUS
+    ("Volkswagen Golf GTI", 220),
+    ("BMW M3 E46", 343),
+    ("Audi R8", 420),
+    ("Porsche 911 Turbo", 420),
+    ("Mercedes-Benz AMG GT", 469),
+
+    # MUSCLE CARS
+    ("Ford Mustang GT", 450),
+    ("Chevrolet Camaro SS", 455),
+    ("Dodge Challenger R/T", 375),
+    ("Dodge Charger R/T", 375),
+
+    # SUPERCARROS
+    ("Chevrolet Corvette Z06", 505),
+    ("Ford Mustang Shelby GT500", 760),
+    ("Lamborghini Huracán", 610),
+
+    # CLÁSSICOS DO BRASIL
+    ("Chevrolet Opala", 140),
+    ("Volkswagen Gol GTI", 120),
 ]
 
 PECAS_INICIAIS = [
-    ("Turbo Estágio 3", 120, None),
-    ("Kit Nitro 100 shot", 80, None),
-    ("Intercooler Esportivo", 45, None),
-    ("Escapamento Direto em Inox", 30, None),
-    ("Filtro de Ar Cônico", 15, None),
-    ("Comando de Válvulas Bravo", 60, None),
+    # Indução Forçada & Sobrealimentação
+    ("Kit Turbo Estágio 1 (.50)", 60, None),
+    ("Kit Turbo Estágio 2 (.70)", 95, None),
+    ("Turbo Estágio 3 Roletado", 140, None),
+    ("Supercharger Twin-Screw", 110, None),
+    ("Intercooler Frontal em Alumínio", 35, None),
+    ("Válvula de Alívio Blow-Off", 10, None),
+
+    # Admissão & Alimentação
+    ("Filtro de Ar Cônico Esportivo", 12, None),
+    ("Intake de Fibra de Carbono", 22, None),
+    ("Bicos Injetores de Alta Vazão (80 lbs)", 30, None),
+    ("Bomba de Combustível Walbro 450", 18, None),
+    ("Coletor de Admissão Plenum", 28, None),
+
+    # Comando & Motor
+    ("Comando de Válvulas Bravo 288°", 55, None),
+    ("Pistões Forjados com Bielas em H", 75, None),
+    ("Velas de Iridium & Cabos de Alta Voltagem", 15, None),
+
+    # Exaustão
+    ("Coletor de Escape 4x1 em Inox", 25, None),
+    ("Downpipe Inox de Alta Performance", 32, None),
+    ("Escapamento Direto Full Inox 3 Pol", 40, None),
+
+    # Eletrônica & Injeção Programável
+    ("Remap de ECU Estágio 1", 35, None),
+    ("Injeção Programável FuelTech FT550", 85, None),
+    ("Two-Step com Launch Control", 15, None),
+
+    # Boost Extra (Potência Bruta)
+    ("Kit Nitro Shot 50 cv", 50, None),
+    ("Kit Nitro Shot 100 cv", 100, None),
+    ("Kit Nitro Shot 200 cv Direct Port", 200, None),
+    ("Kit de Injeção Água/Metanol", 45, None),
 ]
 
 
 def conectar():
     """Cria e configura uma conexão com suporte a chaves estrangeiras."""
-    conn = sqlite3.connect(BANCO)
+    conn = sqlite3.connect("garagem_nfs.db")
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
