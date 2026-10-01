@@ -4,7 +4,10 @@ import interface as ui
 
 def pausa():
     """Pausa a execução até o pressionamento de Enter."""
-    input("\nPressione <Enter> para voltar ao menu...")
+    try:
+        input("\nPressione <Enter> para voltar ao menu...")
+    except (EOFError, KeyboardInterrupt):
+        pass
 
 
 def exibir_garagem(pausar=True):
