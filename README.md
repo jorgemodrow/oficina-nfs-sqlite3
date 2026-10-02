@@ -216,7 +216,7 @@ Como a potência é calculada a partir dos dados atuais das peças, não é nece
 
 ---
 
-## Validações e Segurança
+## Validações e Integridade
 
 O sistema realiza validações antes de modificar os dados:
 
@@ -358,7 +358,7 @@ Turbo Estágio 3
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```text
 garagem-tuning/
@@ -374,7 +374,7 @@ O banco de dados local pode ser incluído no `.gitignore` para evitar versionar 
 
 ---
 
-## 🚀 Requisitos e Execução
+## Requisitos e Execução
 
 ### Requisitos
 
@@ -412,3 +412,20 @@ e inicializa o esquema e os dados padrão.
 ```
 
 A navegação é realizada diretamente pelo terminal, sem necessidade de interface gráfica ou dependências adicionais.
+
+---
+
+## Motivação
+
+Este projeto une o aprendizado de arquitetura de software e modelagem relacional com uma paixão minha de infância por carros e jogos de corrida.
+
+A inspiração para o sistema e a seleção de veículos e peças veio da minha vivência com simuladores e clássicos dos videogames — começando em *Need for Speed: ProStreet* no Nintendo Wii, passando por *Shift 2: Unleashed* e *Most Wanted (2012)* no PS3, até a progressão na franquia *Forza Horizon* (do 2 ao 5).
+
+---
+
+## Autor
+
+Desenvolvido por **Jorge Gabriel Modrow**, estudante de **Análise e Desenvolvimento de Sistemas** na **UFPR**.
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jorgemodrow)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jorgemodrow)
