@@ -93,10 +93,11 @@ def acao_instalar():
         return
 
     peca_id = ui.leia_int("ID da peça a instalar: ")
-    sucesso, mensagem = db.vincular_peca(carro_id, peca_id)
+    sucesso, mensagem, bonus_adicionado, potencia_atual = db.vincular_peca(carro_id, peca_id)
 
     if sucesso:
         ui.msg_sucesso(mensagem)
+        print(f"Bônus: \033[32m+{bonus_adicionado} cv\033[m | Nova potência total: {potencia_atual}")
     else:
         ui.msg_erro(mensagem)
 
@@ -127,10 +128,11 @@ def acao_desinstalar():
     print(ui.linha())
 
     peca_id = ui.leia_int("ID da peça a remover: ")
-    sucesso, mensagem = db.desvincular_peca(carro_id, peca_id)
+    sucesso, mensagem, bonus_removido, potencia_atual = db.desvincular_peca(carro_id, peca_id)
 
     if sucesso:
         ui.msg_sucesso(mensagem)
+        print(f"Bônus: \033[31m-{bonus_removido} cv\033[m | Nova Potência Total: \033[1m{potencia_atual} cv\033[m")
     else:
         ui.msg_erro(mensagem)
 

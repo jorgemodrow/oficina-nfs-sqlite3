@@ -156,36 +156,75 @@ def obter_pecas_estoque():
 
 
 def vincular_peca(carro_id, peca_id):
-    """Instala uma peça do estoque em um veículo."""
+    """Instala uma peça do estoque e retorna a potência total atualizada."""
     with conectar() as conn:
         carro = conn.execute(
-            "SELECT modelo FROM carros WHERE id = ?;", (carro_id,)
+            "SELECT modelo, potencia_base FROM carros WHERE id = ?;", (carro_id,)
         ).fetchone()
         if not carro:
-            return False, "Carro não encontrado."
+            return False, "Carro não encontrado.", 0, 0
 
         peca = conn.execute(
-            "SELECT nome FROM pecas WHERE id = ? AND carro_id IS NULL;", (peca_id,)
+            "SELECT nome, bonus_potencia FROM pecas WHERE id = ? AND carro_id IS NULL;", (peca_id,)
         ).fetchone()
         if not peca:
-            return False, "Peça inválida ou já instalada em outro veículo."
+            return False, "Peça inválida ou já instalada em outro veículo.", 0, 0
 
+        # Instala a peça
         conn.execute(
             "UPDATE pecas SET carro_id = ? WHERE id = ?;", (carro_id, peca_id)
         )
-        return True, f"Peça '{peca[0]}' instalada com sucesso no {carro[0]}."
+
+        # Calcula a soma de todos os bônus instalados no carro agora
+        bonus_total = conn.execute(
+            "SELECT COALESCE(SUM(bonus_potencia), 0) FROM pecas WHERE carro_id = ?;", (carro_id,)
+        ).fetchone()[0]
+
+        modelo, potencia_base = carro[0], carro[1]
+        nome_peca, bonus_peca = peca[0], peca[1]
+        potencia_atual = potencia_base + bonus_total
+
+        return (
+            True,
+            f"Peça '{nome_peca}' instalada com sucesso no {modelo}.",
+            bonus_peca,
+            potencia_atual
+        )
 
 
 def desvincular_peca(carro_id, peca_id):
-    """Remove uma peça instalada e devolve-a ao estoque."""
+    """Remove uma peça instalada e retorna a potência total atualizada."""
     with conectar() as conn:
+        carro = conn.execute(
+            "SELECT modelo, potencia_base FROM carros WHERE id = ?;", (carro_id,)
+        ).fetchone()
+        if not carro:
+            return False, "Carro não encontrado.", 0, 0
+
         peca = conn.execute(
-            "SELECT nome FROM pecas WHERE id = ? AND carro_id = ?;", (peca_id, carro_id)
+            "SELECT nome, bonus_potencia FROM pecas WHERE id = ? AND carro_id = ?;",
+            (peca_id, carro_id),
         ).fetchone()
         if not peca:
-            return False, "Peça não encontrada neste carro."
+            return False, "Peça não encontrada neste carro.", 0, 0
 
+        # Devolve ao estoque
         conn.execute(
             "UPDATE pecas SET carro_id = NULL WHERE id = ?;", (peca_id,)
         )
-        return True, f"Peça '{peca[0]}' desinstalada e devolvida ao estoque."
+
+        # Recalcula a nova soma dos bônus restantes no carro
+        bonus_total = conn.execute(
+            "SELECT COALESCE(SUM(bonus_potencia), 0) FROM pecas WHERE carro_id = ?;", (carro_id,)
+        ).fetchone()[0]
+
+        modelo, potencia_base = carro[0], carro[1]
+        nome_peca, bonus_peca = peca[0], peca[1]
+        potencia_atual = potencia_base + bonus_total
+
+        return (
+            True,
+            f"Peça '{nome_peca}' desinstalada e devolvida ao estoque.",
+            bonus_peca,
+            potencia_atual
+        )
