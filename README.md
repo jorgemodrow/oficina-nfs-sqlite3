@@ -10,8 +10,6 @@ Aplicação de linha de comando (CLI) desenvolvida em **Python 3** com persistê
 
 O sistema permite consultar veículos, visualizar peças disponíveis em estoque, instalar e desinstalar componentes e acompanhar automaticamente a potência total de cada carro a partir dos upgrades instalados.
 
----
-
 ## Funcionalidades
 
 * **Listagem da garagem:** exibe todos os veículos com potência de fábrica, bônus acumulado e potência total.
@@ -22,8 +20,6 @@ O sistema permite consultar veículos, visualizar peças disponíveis em estoque
 * **Cálculo dinâmico de potência:** a potência total é calculada a partir da potência base e da soma dos bônus das peças instaladas.
 * **Validação de entradas:** trata valores numéricos inválidos e cancelamentos durante a entrada de dados.
 * **Persistência local:** os dados são armazenados no arquivo `garagem_nfs.db`.
-
----
 
 ## Arquitetura
 
@@ -88,8 +84,6 @@ Responsável por:
 * calcular a potência dos veículos;
 * executar consultas parametrizadas.
 
----
-
 ## Banco de Dados
 
 O sistema utiliza **SQLite**, através do módulo nativo `sqlite3` do Python. Não são necessárias bibliotecas externas.
@@ -137,7 +131,7 @@ O banco possui duas tabelas principais:
 
 ---
 
-## 🔧 Regras de Negócio
+## Regras de Negócio
 
 ### Estoque
 
@@ -177,8 +171,6 @@ ON DELETE SET NULL
 
 Assim, caso um veículo seja removido, as peças associadas a ele têm seu `carro_id` definido como `NULL`, retornando ao estado de estoque.
 
----
-
 ## Cálculo da Potência
 
 A potência final não é armazenada como uma coluna independente no banco.
@@ -213,8 +205,6 @@ ORDER BY potencia_final DESC;
 * **`ORDER BY`** organiza a garagem pela potência final, da maior para a menor.
 
 Como a potência é calculada a partir dos dados atuais das peças, não é necessário manter manualmente uma coluna de potência final.
-
----
 
 ## Validações e Integridade
 
@@ -260,8 +250,6 @@ conn.execute(
 
 Esse padrão evita a concatenação direta de dados externos nas consultas SQL.
 
----
-
 ## Dados Iniciais
 
 Na inicialização, o programa cria o banco e as tabelas caso ainda não existam.
@@ -303,8 +291,6 @@ O estoque inicial também contém componentes como:
 * FuelTech;
 * Kits Nitro;
 * Injeção água/metanol.
-
----
 
 ## Exemplo de Uso
 
@@ -356,8 +342,6 @@ Turbo Estágio 3
 
 > **Observação:** o exemplo acima deve refletir o estado real do banco no momento em que a demonstração for executada. Caso o Supra já possua outros upgrades, a potência anterior e a potência final poderão ser diferentes.
 
----
-
 ## Estrutura do Projeto
 
 ```text
@@ -372,7 +356,9 @@ garagem-tuning/
 
 O banco de dados local pode ser incluído no `.gitignore` para evitar versionar dados gerados durante a execução.
 
----
+## Modelo Lógico do Banco de Dados
+
+![modelo lógico.png](modelo%20l%C3%B3gico.png)
 
 ## Requisitos e Execução
 
@@ -398,8 +384,6 @@ garagem_nfs.db
 
 e inicializa o esquema e os dados padrão.
 
----
-
 ## 🎮 Menu da Aplicação
 
 ```text
@@ -413,15 +397,11 @@ e inicializa o esquema e os dados padrão.
 
 A navegação é realizada diretamente pelo terminal, sem necessidade de interface gráfica ou dependências adicionais.
 
----
-
 ## Motivação
 
 Este projeto une o aprendizado de arquitetura de software e modelagem relacional com uma paixão minha de infância por carros e jogos de corrida.
 
-A inspiração para o sistema e a seleção de veículos e peças veio da minha vivência com simuladores e clássicos dos videogames — começando em *Need for Speed: ProStreet* no Nintendo Wii, passando por *Shift 2: Unleashed* e *Most Wanted (2012)* no PS3, até a progressão na franquia *Forza Horizon* (do 2 ao 5).
-
----
+A inspiração para o sistema e a seleção de veículos e peças veio da minha vivência com simuladores e clássicos dos videogames — que começou em *Need for Speed: ProStreet* no Nintendo Wii, passando pelo *Shift 2: Unleashed* e *Most Wanted (2012)* no PS3, até a progressão na franquia *Forza Horizon* (do 2 ao 5).
 
 ## Autor
 
