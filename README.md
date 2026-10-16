@@ -5,6 +5,7 @@
 ![Interface](https://img.shields.io/badge/Interface-CLI-1E1E1E?style=for-the-badge&logo=gnometerminal&logoColor=white)
 ![Dependências](https://img.shields.io/badge/Dependências-Nenhuma-2EA44F?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Concluído-2EA44F?style=for-the-badge)
+![Licença MIT](https://img.shields.io/badge/Licença-MIT-green?style=for-the-badge)
 
 Aplicação de linha de comando (CLI) desenvolvida em **Python 3** com persistência de dados em **SQLite** para gerenciamento de uma garagem de veículos e instalação de peças de performance.
 
