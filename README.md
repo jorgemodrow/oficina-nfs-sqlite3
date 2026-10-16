@@ -403,9 +403,15 @@ Este projeto une o aprendizado de arquitetura de software e modelagem relacional
 
 A inspiração para o sistema e a seleção de veículos e peças veio da minha vivência com simuladores e clássicos dos videogames — que começou em *Need for Speed: ProStreet* no Nintendo Wii, passando pelo *Shift 2: Unleashed* e *Most Wanted (2012)* no PS3, até a progressão na franquia *Forza Horizon* (do 2 ao 5).
 
+## Licença
+
+Este projeto está licenciado sob a licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter detalhes.
+
 ## Autor
 
-Desenvolvido por **Jorge Gabriel Modrow**, estudante de **Análise e Desenvolvimento de Sistemas** na **UFPR**.
+Desenvolvido por **Jorge Gabriel Modrow**.
+
+Estudante de **Análise e Desenvolvimento de Sistemas** na **Universidade Federal do Paraná — UFPR**.
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jorgemodrow)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/jorgemodrow)
